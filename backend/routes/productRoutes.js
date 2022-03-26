@@ -1,10 +1,15 @@
-const express = reuire('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-router.get('/', (req, res)=>{} )
+const {
+  getAllProducts,
+  getProductByID,
+} = require("../controller/productController");
 
+//get all products from db
+router.get("/", getAllProducts);
 
+// get product by id from db
+router.get("/:id", getProductByID);
 
-router.get('/:id', (req, res)=>{} )
-
-module.exports = router
+module.exports = router;
