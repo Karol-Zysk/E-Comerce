@@ -11,15 +11,13 @@ import ProductScreen from "./screens/ProductScreen";
 const Main = styled.main``;
 
 function App() {
-
-  const [sideToggle, setSideToggle] = useState(false); 
-
+  const [sideToggle, setSideToggle] = useState(false);
 
   return (
     <Router>
-    <Navbar/>
-    <SideDrawer show={sideToggle}/>
-    <Backdrop show={sideToggle}/>
+      <Navbar toggle={() => setSideToggle(true)} />
+      <SideDrawer show={sideToggle} toggle={() => setSideToggle(false)} />
+      <Backdrop show={sideToggle} toggle={() => setSideToggle(false)} />
       <Main>
         <Routes>
           <Route exact path="/" element={<HomeScreen />} />

@@ -99,7 +99,7 @@ const HamburgerItem = styled.div`
   }
 `;
 
-const Navbar = () => {
+const Navbar = ({ toggle }) => {
   return (
     <NavbarContainer>
       <NavbarLogo>
@@ -122,7 +122,7 @@ const Navbar = () => {
         </Li>
       </NavbarLinks>
 
-      <HamburgerMenu>
+      <HamburgerMenu onClick={toggle}>
         <HamburgerItem></HamburgerItem>
         <HamburgerItem></HamburgerItem>
         <HamburgerItem></HamburgerItem>

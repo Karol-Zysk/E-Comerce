@@ -11,8 +11,8 @@ const BackdropContainer = styled.div`
   left: 0;
 `;
 
-const Backdrop = ({ show }) => {
-  return show && <BackdropContainer></BackdropContainer>;
+const Backdrop = ({ show, toggle }) => {
+  return show && <BackdropContainer onClick={toggle}></BackdropContainer>;
 };
 
 export default Backdrop;
