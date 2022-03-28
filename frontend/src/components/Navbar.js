@@ -37,6 +37,13 @@ const NavbarLinks = styled.ul`
 const Li = styled.li`
   padding-left: 1.5rem;
   color: white;
+  > a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+  }
 `;
 
 const CartSpan = styled.span`
