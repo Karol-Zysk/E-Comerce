@@ -50,20 +50,19 @@ const ProductInfo = styled.div`
     width: 90%;
     text-decoration: none;
     text-align: center;
-    color: black;
-    background-color: white;
+    color: white;
+    background-color: black;
     padding: 8px 16px;
     border: 1px solid black;
-    border-radius: 15px;
     margin-left: auto;
     margin-right: auto;
     font-size: 1rem;
     font-weight: bold;
     &:hover {
-      background-color: black;
-      color: white;
+      background-color: white;
+      color: black;
 
-      transition: all 300ms;
+      transition: all 200ms;
     }
   }
   > * {
@@ -99,7 +98,7 @@ const Product = () => {
           z głową
         </ProductDesc>
         <ProductPrice>$10</ProductPrice>
-        <Link to={`/product/${111}`}> Viev</Link>
+        <Link to={`/product/${111}`}> View</Link>
       </ProductInfo>
     </Container>
   );

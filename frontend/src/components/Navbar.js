@@ -84,11 +84,12 @@ const HamburgerMenu = styled.div`
   }
 `;
 
-const CartLink = styled.a`
+const CartLink = styled.div`
   background: #333;
   padding: 10px;
   border-radius: 8px;
   transition: 300ms ease;
+  display: flex;
 
   &&:hover {
     background-color: #dd219e;
@@ -115,13 +116,15 @@ const Navbar = ({ toggle }) => {
 
       <NavbarLinks>
         <Li>
-          <CartLink to="/cart" style={{}}>
-            <AiOutlineShoppingCart />
-            <CartSpan>
-              Cart
-              <CartBadge>0</CartBadge>
-            </CartSpan>
-          </CartLink>
+          <Link to="/cart">
+            <CartLink>
+              <AiOutlineShoppingCart />
+              <CartSpan>
+                Cart
+                <CartBadge>0</CartBadge>
+              </CartSpan>
+            </CartLink>
+          </Link>
         </Li>
 
         <Li>
