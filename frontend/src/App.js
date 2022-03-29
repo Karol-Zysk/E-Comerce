@@ -10,6 +10,7 @@ import ProductScreen from "./screens/ProductScreen";
 import Footer from "./components/Footer";
 
 const Main = styled.main`
+  min-height: calc(100vh - 230px);
   background: transparent;
   padding: 5rem 2rem 2rem 2rem;
   @media (max-width: 960px) {
@@ -32,7 +33,7 @@ function App() {
           <Route exact path="/cart" element={<CartScreen />} />
         </Routes>
       </Main>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }

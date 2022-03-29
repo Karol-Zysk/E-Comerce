@@ -9,7 +9,8 @@ background-color: black;
 display:flex;
 align-items: center;
 justify-content: right;
-padding-right: 50px;`
+padding-right: 50px;
+`
 
 const FooterText = styled.span`
 display: flex;

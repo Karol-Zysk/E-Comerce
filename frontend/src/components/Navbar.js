@@ -135,7 +135,7 @@ const Navbar = ({ toggle }) => {
     <NavbarContainer>
       <NavbarLogo>
         <H1>
-          Gym<b>EQ</b>
+          <b>EQ</b>
         </H1>
       </NavbarLogo>
 
