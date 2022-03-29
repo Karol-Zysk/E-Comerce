@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 300px;
-  padding: 1rem;
-  background-color: white;
+  max-width: 95%;
+  grid-gap: 1rem;
+  padding: 1.2rem;
   cursor: pointer;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px 0 rgba(44, 44, 40, 0.47);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   margin: 8px auto;
   display: flex;
   flex-direction: column;
@@ -29,18 +34,19 @@ const Container = styled.div`
   }
   @media (max-width: 700px) {
     width: 290px;
-  } 
+  }
   @media (max-width: 630px) {
     width: 450px;
-  } 
+  }
   @media (max-width: 500px) {
     width: 350px;
-  } 
+  }
 `;
 
 const Image = styled.img`
-  height: 170px;
-  border-radius: 8px;
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px 0 rgba(44, 44, 40, 0.47);
   margin-bottom: 8px;
 `;
 
@@ -71,31 +77,30 @@ const ProductInfo = styled.div`
 `;
 
 const ProductName = styled.p`
-  font-size: 1rem;
+  font-size: 1.2rem;
   overflow: hidden;
-  font-weight: 500;
+  font-weight: 600;
 `;
 
 const ProductDesc = styled.p`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  margin-bottom: 18px;
 `;
 
 const ProductPrice = styled.p`
   font-weight: bold;
+  font-size: 1.2rem;
+  text-align: right;
+  margin: 22px;
 `;
 
-const Product = ({imageUrl, name, price, description, productId}) => {
+const Product = ({ imageUrl, name, price, description, productId }) => {
   return (
     <Container>
-      <Image
-        src={imageUrl}
-        alt={name}
-      />
+      <Image src={imageUrl} alt={name} />
       <ProductInfo>
         <ProductName>{name}</ProductName>
-        <ProductDesc>
-          {description.substring(0,200)}...
-        </ProductDesc>
+        <ProductDesc>{description.substring(0, 200)}...</ProductDesc>
         <ProductPrice>${price}</ProductPrice>
         <Link to={`/products/${productId}`}> View</Link>
       </ProductInfo>

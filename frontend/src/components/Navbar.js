@@ -7,29 +7,39 @@ import { useSelector } from "react-redux";
 const NavbarContainer = styled.nav`
   width: 100%;
   height: 110px;
-  background-color: black;
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 1rem;
+  @media (max-width: 800px) {
+    padding-left: 0rem;
+  }
   z-index: 50;
+  box-shadow: 0 8px 32px 0 rgba(44, 44, 40, 0.47);
 `;
 
 const NavbarLogo = styled.div`
-  color: white;
+  color: black;
   font-size: 1.4rem;
   cursor: pointer;
+  margin-left: 3rem;
+
   @media (max-width: 500px) {
     font-size: 1rem;
   }
 `;
 
-const H1 = styled.h1``;
+const H1 = styled.h1`
+  font-size: 3rem;
+  font-weight: 300;
+`;
 
 const NavbarLinks = styled.ul`
   display: flex;
   list-style: none;
   align-items: center;
+  margin-right: 3rem;
   @media (max-width: 960px) {
     display: none;
   }
@@ -37,11 +47,11 @@ const NavbarLinks = styled.ul`
 
 const Li = styled.li`
   padding-left: 1.5rem;
-  color: white;
+  color: black;
   > a {
     text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
+    color: black;
+    font-size: 1.5rem;
     display: flex;
     align-items: center;
   }
@@ -64,10 +74,10 @@ const CartBadge = styled.span`
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.3rem;
 `;
 const HamburgerMenu = styled.div`
-  width: 30px;
+  width: 40px;
   height: 30px;
   display: none;
 
@@ -86,14 +96,15 @@ const HamburgerMenu = styled.div`
 `;
 
 const CartLink = styled.div`
-  background: #333;
+  background: white;
   padding: 10px;
-  border-radius: 8px;
   transition: 300ms ease;
   display: flex;
+  border: solid 2px transparent;
+  margin-right: 15px;
 
   &&:hover {
-    background-color: #dd219e;
+    border-bottom: solid 2px black;
     transition: 300ms ease;
     cursor: pointer;
   }
@@ -101,8 +112,8 @@ const CartLink = styled.div`
 
 const HamburgerItem = styled.div`
   width: 100%;
-  height: 3px;
-  background-color: white;
+  height: 4px;
+  background-color: black;
   &&:hover {
     background: #dd219e;
   }
@@ -123,14 +134,16 @@ const Navbar = ({ toggle }) => {
   return (
     <NavbarContainer>
       <NavbarLogo>
-        <H1>GymEQ</H1>
+        <H1>
+          Gym<b>EQ</b>
+        </H1>
       </NavbarLogo>
 
       <NavbarLinks>
         <Li>
           <Link to="/cart">
             <CartLink>
-              <AiOutlineShoppingCart />
+              <AiOutlineShoppingCart style={{ fontSize: "1.8rem" }} />
               <CartSpan>
                 Cart
                 <CartBadge>{getCartCount()}</CartBadge>
@@ -140,7 +153,9 @@ const Navbar = ({ toggle }) => {
         </Li>
 
         <Li>
-          <Link to="/">Shop</Link>
+          <Link style={{ fontSize: "2rem" }} to="/">
+            Shop
+          </Link>
         </Li>
       </NavbarLinks>
 

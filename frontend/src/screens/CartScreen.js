@@ -6,8 +6,7 @@ import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 const Container = styled.main`
   display: flex;
-  max-width: 95%;
-  margin-top: 2rem;
+  max-width: 100%;
 
   @media (min-width: 960px) {
     justify-content: center;
@@ -29,14 +28,30 @@ const Left = styled.div`
 `;
 
 const Title = styled.h2`
-  margin-bottom: 1rem;
+  font-size: 2.4rem;
+  color: black;
+  margin: 1rem 0rem 1rem 1.6rem;
+  @media (max-width: 1232px) {
+    font-size: 2.2rem;
+  }
+  @media (max-width: 950px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 630px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const Right = styled.div`
   flex: 0.3;
-  background-color: white;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px 0 rgba(44, 44, 40, 0.47);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   height: fit-content;
+  padding: 0.5rem;
   @media (max-width: 960px) {
     margin: 1rem;
   }
@@ -49,11 +64,13 @@ const Right = styled.div`
 const Info = styled.div``;
 
 const Subtotal = styled.p`
-  padding: 8px;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
 `;
 
 const Price = styled.p`
-  padding: 8px;
+  font-size: 1.1rem;
+  margin-bottom: 18px;
 `;
 
 const ButtonWrapper = styled.div`

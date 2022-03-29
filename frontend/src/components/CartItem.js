@@ -4,30 +4,40 @@ import { Link } from "react-router-dom";
 import { BsTrash } from "react-icons/bs";
 
 const Container = styled.div`
-  padding: 1rem;
-  margin: 8px;
+  padding: 2rem;
+  margin-bottom: 18px;
 
   @media (max-width: 960px) {
-    margin: 0;
+    margin-bottom: 18px;
   }
   display: grid;
   grid-template-columns: 1fr 4fr 1fr 1fr 1fr;
-  gap: 8px;
-  background-color: white;
-  border-radius: 2px;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 16px 0 rgba(44, 44, 40, 0.47);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   place-items: center;
+  font-size: 1.2rem;
   > a {
     text-decoration: none;
     font-weight: bold;
     color: black;
+    border-bottom: 2px solid transparent;
+    transition: all 150ms ease-in-out ;
+    @media (max-width: 1100px) {
+      font-size: 1rem;
+    }
     @media (max-width: 700px) {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
     @media (max-width: 500px) {
-      font-size: 0.6rem;
+      font-size: 0.8rem;
     }
     &:hover {
-      color: #dd219e;
+      border-bottom: 2px solid black;
     }
   }
 `;
@@ -35,24 +45,25 @@ const Container = styled.div`
 const ImageWrapper = styled.div``;
 
 const Image = styled.img`
-  width: 150%;
+  width: 190%;
 
   @media (max-width: 700px) {
-    width: 150%;
+    width: 160%;
   }
   @media (max-width: 500px) {
-    width: 180%;
+    width: 190%;
   }
 `;
 
 const ItemName = styled.p``;
 
 const ItemPrice = styled.p`
+font-size: 1.1rem;
   @media (max-width: 700px) {
     font-size: 0.8rem;
   }
   @media (max-width: 500px) {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 `;
 
@@ -72,9 +83,9 @@ const Option = styled.option`
 `;
 
 const Button = styled.button`
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   padding: 5px 5px;
-  color: crimson;
+  color: black;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -95,14 +106,17 @@ const CartItem = ({ item, quantityChangeHandler, removeHandler }) => {
         <ItemName>{item.name}</ItemName>
       </Link>
       <ItemPrice>${item.price}</ItemPrice>
-      <Select value={item.quantity} onChange={(e) => quantityChangeHandler(item.product, e.target.value)}>
+      <Select
+        value={item.quantity}
+        onChange={(e) => quantityChangeHandler(item.product, e.target.value)}
+      >
         {[...Array(item.countInStock).keys()].map((x) => (
           <Option key={x + 1} value={x + 1}>
             {x + 1}
           </Option>
         ))}
       </Select>
-      <Button onClick={()=> removeHandler(item.product)}>
+      <Button onClick={() => removeHandler(item.product)}>
         <BsTrash></BsTrash>
       </Button>
     </Container>

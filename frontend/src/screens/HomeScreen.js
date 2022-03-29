@@ -7,15 +7,24 @@ import Product from "../components/Product";
 import { getProducts as listProducts } from "../redux/actions/productActions";
 
 const Container = styled.div`
-  max-width: 1300px;
-  margin: 1rem auto;
+  max-width: 100%;
+  
+
 `;
 
 const Title = styled.h2`
-  font-size: 1.5rem;
+  font-size: 2.4rem;
   color: black;
-  margin-bottom: 1rem;
-  margin-left: 8px;
+  margin: 1rem 0rem 1rem 1.6rem;
+  @media (max-width: 1232px) {
+    font-size: 2.2rem;
+  }
+  @media (max-width: 950px) {
+    font-size: 1.8rem;
+  }
+  @media (max-width: 630px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const H2 = styled.h2`

@@ -7,8 +7,15 @@ import SideDrawer from "./components/SideDrawer";
 import CartScreen from "./screens/CartScreen";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import Footer from "./components/Footer";
 
-const Main = styled.main``;
+const Main = styled.main`
+  background: transparent;
+  padding: 5rem 2rem 2rem 2rem;
+  @media (max-width: 960px) {
+    padding: 3rem 1rem 1rem 1rem;
+  }
+`;
 
 function App() {
   const [sideToggle, setSideToggle] = useState(false);
@@ -25,6 +32,7 @@ function App() {
           <Route exact path="/cart" element={<CartScreen />} />
         </Routes>
       </Main>
+      <Footer/>
     </Router>
   );
 }

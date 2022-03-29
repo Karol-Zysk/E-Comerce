@@ -7,9 +7,10 @@ import { addToCart } from "../redux/actions/cartActions";
 import { useNavigate } from "react-router-dom";
 
 const Container = styled.main`
-  max-width: 1300px;
-  margin: 1rem auto;
+  max-width: 100%;
+  gap: 2rem;
   display: flex;
+
   @media (max-width: 960px) {
     flex-direction: column;
   }
@@ -18,6 +19,13 @@ const Container = styled.main`
 const Left = styled.div`
   display: flex;
   flex: 0.8;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px 0 rgba(44, 44, 40, 0.47);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   @media (max-width: 960px) {
     flex-direction: column;
     flex: 1;
@@ -27,6 +35,7 @@ const Left = styled.div`
 const LeftImageWrapper = styled.div`
   margin: 1rem;
   flex: 0.6;
+
   @media (max-width: 960px) {
     flex: 1;
   }
@@ -43,26 +52,43 @@ const LeftInfo = styled.div`
   }
 `;
 
-const LeftName = styled.p`
+const ProductName = styled.p`
+  font-size: 1.2rem;
+  overflow: hidden;
+  font-weight: 600;
+`;
+
+const ProductDesc = styled.p`
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+`;
+
+const ProductPrice = styled.p`
   font-weight: bold;
-  font-size: 1.3rem;
-  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: right;
+  margin: 22px;
 `;
+
 const Price = styled.p`
-  padding: 1rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-`;
-const Desc = styled.p`
-  padding: 1rem;
-  border-bottom: none;
+  font-weight: bold;
+  font-size: 1rem;
 `;
 
 const Image = styled.img`
   width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px 0 rgba(44, 44, 40, 0.47);
 `;
 
 const Right = styled.div`
   flex: 0.2;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 16px 0 rgba(44, 44, 40, 0.47);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   @media (max-width: 960px) {
     flex: 1;
     padding: 1rem;
@@ -118,6 +144,7 @@ const Button = styled.button`
   background-color: black;
   color: white;
   border: 1px solid black;
+
   font-weight: bold;
   cursor: pointer;
   transition: all 200ms ease-in-out;
@@ -150,9 +177,9 @@ const ProductScreen = ({ history }) => {
   }, [dispatch, product, id]);
 
   const addToCartHandler = () => {
-    dispatch(addToCart(product._id, quantity))
-    navigate('/cart')
-  }
+    dispatch(addToCart(product._id, quantity));
+    navigate("/cart");
+  };
 
   return (
     <Container>
@@ -167,9 +194,9 @@ const ProductScreen = ({ history }) => {
               <Image src={product.imageUrl} alt={product.name} />
             </LeftImageWrapper>
             <LeftInfo>
-              <LeftName>{product.name}</LeftName>
-              <Price>Price: ${product.price}</Price>
-              <Desc>{product.description}</Desc>
+              <ProductName>{product.name}</ProductName>
+              <ProductPrice>Price: ${product.price}</ProductPrice>
+              <ProductDesc>{product.description}</ProductDesc>
             </LeftInfo>
           </Left>
           <Right>
