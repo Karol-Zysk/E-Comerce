@@ -1,5 +1,9 @@
-import React from "react";
+import {useState, useEffect} from "react";
+import {useDispatch, useSelector} from 'react-redux'
 import styled from "styled-components";
+import { getProductDetails} from '../redux/actions/productActions'
+import {addToCart} from '../redux/actions/cartActions'
+
 
 const Container = styled.main`
   max-width: 1300px;
@@ -121,7 +125,10 @@ const Button = styled.button`
 color: black;}
 `;
 
-const ProductScreen = () => {
+const ProductScreen = ({match, history}) => {
+
+const [quantity, setquantity] = useState()
+
   return (
     <Container>
       <Left>

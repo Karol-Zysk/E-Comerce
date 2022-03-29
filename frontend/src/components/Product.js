@@ -47,7 +47,7 @@ const Image = styled.img`
 const ProductInfo = styled.div`
   > a {
     display: block;
-    width: 90%;
+    width: 100%;
     text-decoration: none;
     text-align: center;
     color: white;
@@ -84,21 +84,20 @@ const ProductPrice = styled.p`
   font-weight: bold;
 `;
 
-const Product = () => {
+const Product = ({imageUrl, name, price, description, productId}) => {
   return (
     <Container>
       <Image
-        src="https://images.unsplash.com/photo-1564424224827-cd24b8915874?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80"
-        alt="Product"
+        src={imageUrl}
+        alt={name}
       />
       <ProductInfo>
-        <ProductName>Piłka do rolowania</ProductName>
+        <ProductName>{name}</ProductName>
         <ProductDesc>
-          Piłka służy do masażu głębokich mięsni zbyt mocno spiętych. Roluj się
-          z głową
+          {description.substring(0,200)}...
         </ProductDesc>
-        <ProductPrice>$10</ProductPrice>
-        <Link to={`/product/${111}`}> View</Link>
+        <ProductPrice>${price}</ProductPrice>
+        <Link to={`/product/${productId}`}> View</Link>
       </ProductInfo>
     </Container>
   );
