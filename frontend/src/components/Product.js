@@ -97,7 +97,7 @@ const Product = ({imageUrl, name, price, description, productId}) => {
           {description.substring(0,200)}...
         </ProductDesc>
         <ProductPrice>${price}</ProductPrice>
-        <Link to={`/product/${productId}`}> View</Link>
+        <Link to={`/products/${productId}`}> View</Link>
       </ProductInfo>
     </Container>
   );

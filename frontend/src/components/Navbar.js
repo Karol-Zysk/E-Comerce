@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { useSelector } from "react-redux";
 
 const NavbarContainer = styled.nav`
   width: 100%;
@@ -108,6 +109,17 @@ const HamburgerItem = styled.div`
 `;
 
 const Navbar = ({ toggle }) => {
+  const cart = useSelector((state) => state.cart);
+
+  const { cartItems } = cart;
+
+  const getCartCount = () => {
+    return cartItems.reduce(
+      (quantity, item) => quantity + Number(item.quantity),
+      0
+    );
+  };
+
   return (
     <NavbarContainer>
       <NavbarLogo>
@@ -121,7 +133,7 @@ const Navbar = ({ toggle }) => {
               <AiOutlineShoppingCart />
               <CartSpan>
                 Cart
-                <CartBadge>0</CartBadge>
+                <CartBadge>{getCartCount()}</CartBadge>
               </CartSpan>
             </CartLink>
           </Link>

@@ -11,7 +11,7 @@ try {
 }
 }
 
-const getProductByID = async (req, res) => {
+const getProductById = async (req, res) => {
 try {
     const product = await Product.findById(req.params.id)
 
@@ -24,5 +24,5 @@ try {
 
 module.exports = {
     getAllProducts,
-    getProductByID
+    getProductById
 }

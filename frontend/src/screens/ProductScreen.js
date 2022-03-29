@@ -1,9 +1,10 @@
-import {useState, useEffect} from "react";
-import {useDispatch, useSelector} from 'react-redux'
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getProductDetails} from '../redux/actions/productActions'
-import {addToCart} from '../redux/actions/cartActions'
-
+import { getProductDetails } from "../redux/actions/productActions";
+import { useParams } from "react-router-dom";
+import { addToCart } from "../redux/actions/cartActions";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.main`
   max-width: 1300px;
@@ -120,59 +121,87 @@ const Button = styled.button`
   font-weight: bold;
   cursor: pointer;
   transition: all 200ms ease-in-out;
-&&:hover{
+  &&:hover {
     background-color: white;
-color: black;}
+    color: black;
+  }
 `;
 
-const ProductScreen = ({match, history}) => {
+const H2 = styled.h2`
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3rem;
+`;
 
-const [quantity, setquantity] = useState()
+const ProductScreen = ({ history }) => {
+  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+
+  const productDetails = useSelector((state) => state.getProductDetails);
+  const { loading, error, product } = productDetails;
+
+  let { id } = useParams();
+  let navigate = useNavigate();
+
+  useEffect(() => {
+    if (product && id !== product._id) {
+      dispatch(getProductDetails(id));
+    }
+  }, [dispatch, product, id]);
+
+  const addToCartHandler = () => {
+    dispatch(addToCart(product._id, quantity))
+    navigate('/cart')
+  }
 
   return (
     <Container>
-      <Left>
-        <LeftImageWrapper>
-          <Image
-            src="https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1463&q=80"
-            alt="productImage"
-          />
-        </LeftImageWrapper>
-        <LeftInfo>
-          <LeftName>Product 1</LeftName>
-          <Price>Price: $5.99</Price>
-          <Desc>
-            JBL Flip 4 is the next generation in the award-winning Flip series;
-            it is a portable Bluetooth speaker that delivers surprisingly
-            powerful stereo sound. This compact speaker is powered by a 3000mAh
-            rechargeable Li-ion battery that offers up to 12 hours of
-            continuous, high-quality audio playtime.
-          </Desc>
-        </LeftInfo>
-      </Left>
-      <Right>
-        <RightInfo>
-          <Price>
-            Price: <Span>$4.99</Span>
-          </Price>
-          <Status>
-            Status: <Span>In Stock</Span>
-          </Status>
-          <Quantity>
-            <Select>
-              <Option value="1">1</Option>
-              <Option value="2">2</Option>
-              <Option value="3">3</Option>
-              <Option value="4">4</Option>
-              <Option value="5">5</Option>
-              <Option value="6">6</Option>
-            </Select>
-          </Quantity>
-          <ButtonWrapper>
-            <Button>Add to cart</Button>
-          </ButtonWrapper>
-        </RightInfo>
-      </Right>
+      {loading ? (
+        <H2>Loading...</H2>
+      ) : error ? (
+        <H2>{error}</H2>
+      ) : (
+        <>
+          <Left>
+            <LeftImageWrapper>
+              <Image src={product.imageUrl} alt={product.name} />
+            </LeftImageWrapper>
+            <LeftInfo>
+              <LeftName>{product.name}</LeftName>
+              <Price>Price: ${product.price}</Price>
+              <Desc>{product.description}</Desc>
+            </LeftInfo>
+          </Left>
+          <Right>
+            <RightInfo>
+              <Price>
+                Price: <Span>${product.price}</Span>
+              </Price>
+              <Status>
+                Status:{" "}
+                <Span>
+                  {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
+                </Span>
+              </Status>
+              <Quantity>
+                <Select
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                >
+                  {[...Array(product.countInStock).keys()].map((x) => (
+                    <Option key={x + 1} value={x + 1}>
+                      {x + 1}
+                    </Option>
+                  ))}
+                </Select>
+              </Quantity>
+              <ButtonWrapper>
+                <Button onClick={addToCartHandler}>Add to cart</Button>
+              </ButtonWrapper>
+            </RightInfo>
+          </Right>
+        </>
+      )}
     </Container>
   );
 };

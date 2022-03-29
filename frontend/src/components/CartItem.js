@@ -6,7 +6,7 @@ import { BsTrash } from "react-icons/bs";
 const Container = styled.div`
   padding: 1rem;
   margin: 8px;
-  
+
   @media (max-width: 960px) {
     margin: 0;
   }
@@ -36,7 +36,6 @@ const ImageWrapper = styled.div``;
 
 const Image = styled.img`
   width: 150%;
-  
 
   @media (max-width: 700px) {
     width: 150%;
@@ -85,29 +84,25 @@ const Button = styled.button`
   }
 `;
 
-const CartItem = () => {
+const CartItem = ({ item, quantityChangeHandler, removeHandler }) => {
   return (
     <Container>
       <ImageWrapper>
-        <Image
-          src="https://images.unsplash.com/photo-1605787020600-b9ebd5df1d07?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1463&q=80"
-          alt="productImage"
-        ></Image>
+        <Image src={item.imageUrl} alt={item.name}></Image>
       </ImageWrapper>
 
-      <Link to={`/product/${111}`} className="cartItemLink">
-        <ItemName>Playstation</ItemName>
+      <Link to={`/products/${item.product}`}>
+        <ItemName>{item.name}</ItemName>
       </Link>
-      <ItemPrice>$4.99</ItemPrice>
-      <Select>
-        <Option value="1">1</Option>
-        <Option value="2">2</Option>
-        <Option value="3">3</Option>
-        <Option value="4">4</Option>
-        <Option value="5">5</Option>
-        <Option value="6">6</Option>
+      <ItemPrice>${item.price}</ItemPrice>
+      <Select value={item.quantity} onChange={(e) => quantityChangeHandler(item.product, e.target.value)}>
+        {[...Array(item.countInStock).keys()].map((x) => (
+          <Option key={x + 1} value={x + 1}>
+            {x + 1}
+          </Option>
+        ))}
       </Select>
-      <Button>
+      <Button onClick={()=> removeHandler(item.product)}>
         <BsTrash></BsTrash>
       </Button>
     </Container>

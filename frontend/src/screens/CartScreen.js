@@ -1,12 +1,14 @@
-import React from "react";
 import styled from "styled-components";
 import CartItem from "../components/CartItem";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 const Container = styled.main`
   display: flex;
   max-width: 95%;
   margin-top: 2rem;
-  
+
   @media (min-width: 960px) {
     justify-content: center;
     align-items: center;
@@ -59,30 +61,72 @@ const ButtonWrapper = styled.div`
 `;
 
 const Button = styled.button`
-padding: 8px 16px;
-width: 100%;
-background-color: black;
-color: white;
-border: 1px solid black;
-font-weight: bold;
-cursor: pointer;
-transition: all 200ms ease-in-out;
-&&:hover{
+  padding: 8px 16px;
+  width: 100%;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 200ms ease-in-out;
+  &&:hover {
     background-color: white;
-color: black;
-}`;
+    color: black;
+  }
+`;
 
 const CartScreen = () => {
+  const dispatch = useDispatch();
+
+  const cart = useSelector((state) => state.cart);
+
+  const { cartItems } = cart;
+
+  const quantityChangeHandler = (id, quantity) => {
+    dispatch(addToCart(id, quantity));
+  };
+
+  const removeHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
+
+  const getCartCount = () => {
+    return cartItems.reduce(
+      (quantity, item) => Number(item.quantity) + quantity,
+      0
+    );
+  };
+
+  const getCartSubtotal = () => {
+    return cartItems.reduce(
+      (price, item) => item.price * item.quantity + price,
+      0
+    );
+  };
+
   return (
     <Container>
       <Left>
         <Title>Shopping Cart</Title>
-        <CartItem></CartItem>
+        {cartItems.length === 0 ? (
+          <h3>
+            Your Cart is empty <Link to="/">Go To Shop</Link>
+          </h3>
+        ) : (
+          cartItems.map((item) => (
+            <CartItem
+              key={item.product}
+              item={item}
+              quantityChangeHandler={quantityChangeHandler}
+              removeHandler={removeHandler}
+            />
+          ))
+        )}
       </Left>
       <Right>
         <Info>
-          <Subtotal>Subtotal (0) items</Subtotal>
-          <Price>$4.99</Price>
+          <Subtotal>Subtotal ({getCartCount()}) items</Subtotal>
+          <Price>${getCartSubtotal().toFixed(2)}</Price>
         </Info>
         <ButtonWrapper>
           <Button>Proceed to payment</Button>

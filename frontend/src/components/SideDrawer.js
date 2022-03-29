@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import {useSelector} from 'react-redux'
 
 const SideDrawerContainer = styled.div`
   width: 70%;
@@ -74,6 +75,19 @@ const SideDrawerBadge = styled.span`
 `;
 
 const SideDrawer = ({ show, toggle }) => {
+
+  const cart = useSelector((state) => state.cart);
+
+  const { cartItems } = cart;
+
+  const getCartCount = () => {
+    return cartItems.reduce(
+      (quantity, item) => quantity + Number(item.quantity),
+      0
+    );
+  };
+
+
   return (
     <SideDrawerContainer show={show}>
       <SideDrawerUl onClick={toggle}>
@@ -81,7 +95,7 @@ const SideDrawer = ({ show, toggle }) => {
           <Link to="/cart">
             <AiOutlineShoppingCart />
             <SideDrawerSpan>
-              Cart <SideDrawerBadge>0</SideDrawerBadge>
+              Cart <SideDrawerBadge>{getCartCount()}</SideDrawerBadge>
             </SideDrawerSpan>
           </Link>
         </SideDrawerLi>
