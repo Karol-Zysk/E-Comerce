@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineShop } from "react-icons/ai";
 import { useSelector } from "react-redux";
 
 const NavbarContainer = styled.nav`
   width: 100%;
-  height: 110px;
+  height: 130px;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -32,7 +32,7 @@ const NavbarLogo = styled.div`
 
 const H1 = styled.h1`
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: 400;
 `;
 
 const NavbarLinks = styled.ul`
@@ -46,12 +46,11 @@ const NavbarLinks = styled.ul`
 `;
 
 const Li = styled.li`
-  padding-left: 1.5rem;
   color: black;
   > a {
     text-decoration: none;
     color: black;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     display: flex;
     align-items: center;
   }
@@ -80,7 +79,6 @@ const HamburgerMenu = styled.div`
   width: 40px;
   height: 30px;
   display: none;
-
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -135,26 +133,28 @@ const Navbar = ({ toggle }) => {
     <NavbarContainer>
       <NavbarLogo>
         <H1>
-          <b>EQ</b>
+          <b>E-comerce</b>
         </H1>
       </NavbarLogo>
 
       <NavbarLinks>
+        <CartLink>
+          <Li>
+            <Link to="/">
+              <AiOutlineShop style={{ fontSize: "1.9rem" }} />
+              <CartSpan style={{ marginRight: "10px" }}>Shop</CartSpan>
+            </Link>
+          </Li>
+        </CartLink>
         <Li>
           <Link to="/cart">
             <CartLink>
-              <AiOutlineShoppingCart style={{ fontSize: "1.8rem" }} />
+              <AiOutlineShoppingCart style={{ fontSize: "1.9rem" }} />
               <CartSpan>
                 Cart
                 <CartBadge>{getCartCount()}</CartBadge>
               </CartSpan>
             </CartLink>
-          </Link>
-        </Li>
-
-        <Li>
-          <Link style={{ fontSize: "2rem" }} to="/">
-            Shop
           </Link>
         </Li>
       </NavbarLinks>

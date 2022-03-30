@@ -10,7 +10,7 @@ import ProductScreen from "./screens/ProductScreen";
 import Footer from "./components/Footer";
 
 const Main = styled.main`
-  min-height: calc(100vh - 230px);
+  min-height: calc(100vh - 240px);
   background: transparent;
   padding: 5rem 2rem 2rem 2rem;
   @media (max-width: 960px) {

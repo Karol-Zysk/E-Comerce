@@ -8,24 +8,9 @@ import { getProducts as listProducts } from "../redux/actions/productActions";
 
 const Container = styled.div`
   max-width: 100%;
-  
-
 `;
 
-const Title = styled.h2`
-  font-size: 2.4rem;
-  color: black;
-  margin: 1rem 0rem 1rem 1.6rem;
-  @media (max-width: 1232px) {
-    font-size: 2.2rem;
-  }
-  @media (max-width: 950px) {
-    font-size: 1.8rem;
-  }
-  @media (max-width: 630px) {
-    font-size: 1.5rem;
-  }
-`;
+
 
 const H2 = styled.h2`
   margin-left: auto;
@@ -59,7 +44,6 @@ const HomeScreen = () => {
 
   return (
     <Container>
-      <Title>Equipment</Title>
 
       <Products>
         {loading ? (

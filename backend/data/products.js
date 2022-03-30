@@ -56,7 +56,7 @@ const products = [
   {
     name: "LENOVO ThinkPad L13 ",
     imageUrl:
-      "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/21/2113177/Laptop-LENOVO-ThinkPad-L13-front-10.jpg",
+      "https://images.pexels.com/photos/1229861/pexels-photo-1229861.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     description:
       "The ThinkPad L13 is powerful thanks to the 10th Gen Intel Core processor, SSD, DDR4 memory, super-fast Wi-Fi 6 connectivity and Windows 10 Professional. It is thin and light, with a diagonal of 13.3 inches. It also offers robust data security, privacy protection, and a fast-charging battery so you can safely take it to work on the go.",
     price: 540,
@@ -65,7 +65,7 @@ const products = [
   {
     name: "Huawei P30 Pro 6 GB",
     imageUrl:
-      "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/31/3195656/HUAWEI-Nova-9-8-128GB-6.57-120Hz-Niebieski-Glowne.jpg",
+      "https://images.pexels.com/photos/248528/pexels-photo-248528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     description:
       "The HUAWEI nova 9 opens a new chapter in the history of HUAWEI smartphones. The HUAWEI nova series was created for a young, dynamic generation characterized by high demands in terms of mobile experiences. The new flagship offers an exciting experience thanks to the Ultra Vision cameras: main - 50 MP and front - 32 MP, as well as super fast charging 66 W HUAWEI SuperCharge",
     price: 440,
@@ -74,7 +74,7 @@ const products = [
   {
     name: "ACER Predator Orion 3000 ",
     imageUrl:
-      "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/29/2931860/Komputer-ACER-Predator-Orion-3000-PO3-630-01-front.jpg",
+      "https://cdn.technosports.co.in/wp-content/uploads/2022/01/PREDATOR-HELIOS-300-PH317-56-04-scaled.jpg",
     description:
       "The computer is equipped with the NVIDIA GeForce GTX 1660 Super graphics card, which is adapted to games. It allows you to share the availability of the image, which guarantees gameplay on a level. The cache is 12 MB, which ensures the CPU browses as well as the efficiency of the computer. The processor has 6 cores, which allows several applications to work at once, while not slowing down the device.",
     price: 1020,
@@ -83,7 +83,7 @@ const products = [
   {
     name: "STEELSERIES Rival 3",
     imageUrl:
-      "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/21/2127097/Mysz-STEELSERIES-Rival-3-front-00.jpg",
+      "https://infinigeek.com/assets/razer-mamba-elite-gallery03-gaming-mouse.jpg",
     description:
       "Are you looking for the right computer mouse to meet all your requirements? So be sure to check the STEELSERIES Rival 3 model. It has as many as 6 programmable buttons, a sensitive optical sensor, and its housing looks modern and elegant.",
     price: 140,
@@ -101,7 +101,7 @@ const products = [
   {
     name: "MSI Optix MAG322CR 32",
     imageUrl:
-      "https://prod-api.mediaexpert.pl/api/images/gallery_500_500/thumbnails/images/21/2186901/Monitor-MSI-Optix-MAG322CR-przod.jpg",
+      "https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
     description:
       "The monitor is characterized by a high refresh rate, which is 165 Hz, as well as a millisecond response time of the matrix. Therefore, it will prove itself in dynamic games that require high precision of movements. This will give you an edge and give you a better chance of winning.",
     price: 420,
