@@ -9,6 +9,8 @@ live: https://incredible-macaron-c5e6b1.netlify.app/
 <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB"/>,
 <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" alt="NodeJS"/>,
 
+Electronics store project. Created mainly to learn about React Redux in practice.
+
 Projekt sklepu z elektroniką. Stworzony głównie w celu poznania w praktyce React Redux.
 
 
