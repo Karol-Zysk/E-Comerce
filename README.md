@@ -1,4 +1,4 @@
-# Equipment_shop
+# E-Comerce
 
 live: https://incredible-macaron-c5e6b1.netlify.app/
 
